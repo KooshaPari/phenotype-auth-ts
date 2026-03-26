@@ -11,7 +11,7 @@
 
 export * from './domain/token';
 export * from './domain/claims';
-export * from './ports/token-store';
-export * from './ports/auth-provider';
-export * from './adapters/memory-token-store';
-export * from './adapters/jwt-provider';
+export * from './domain/errors';
+export * from './ports';
+export { MemoryTokenStore, asToken } from './adapters/memory-token-store';
+export { PlaceholderJwtVerifier } from './adapters/jwt-provider';
