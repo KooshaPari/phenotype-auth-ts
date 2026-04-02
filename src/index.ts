@@ -1,6 +1,5 @@
 /**
- * phenotype-auth-ts
- *
+ * Authentication and authorization domain for Phenotype.
  * @trace AUTH-001: OIDC Support
  * @trace AUTH-003: OAuth2 Provider
  * @trace AUTH-004: JWT Validation
