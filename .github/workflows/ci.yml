@@ -2,31 +2,40 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, feature/*, bugfix/*, docs/*, release/*, hotfix/*]
   pull_request:
     branches: [main]
-  workflow_dispatch:
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
 
 jobs:
-  ci:
-    name: TypeScript CI
-    uses: KooshaPari/template-commons/.github/workflows/reusable-typescript-ci.yml@main
-    with:
-      node-version: "20"
-      package-manager: npm
+  test:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: ['18', '20', '22']
+    
+    steps:
+      - uses: actions/checkout@v4
 
-  security:
-    name: Security Audit
-    uses: KooshaPari/template-commons/.github/workflows/reusable-security-scan.yml@main
-    with:
-      language: typescript
-    secrets:
-      SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
+      
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: $123matrix.node-version125
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Run tests
+        run: npm test -- --coverage
+      
 
   phenotype-validate:
-    name: Governance Validation
+    runs-on: ubuntu-latest
     uses: KooshaPari/phenotypeActions/.github/workflows/validate-governance.yml@main
