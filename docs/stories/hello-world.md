@@ -1,46 +1,44 @@
 # Hello World Story
 
-<StoryHeader
-    title="Your First phenotype-auth-ts Operation"
-    :duration="2"
-    :gif="'/gifs/phenotype-auth-ts-hello-world.gif'"
-    difficulty="beginner"
-/>
+## Story
 
-## Objective
+**As a** developer  
+**I want to** verify JWT tokens  
+**So that** I can protect my API endpoints
 
-Get phenotype-auth-ts running with a basic operation.
+## Acceptance Criteria
 
-## Prerequisites
-
-- Rust/Node/Python installed
-- phenotype-auth-ts package installed
+- [ ] Can create a JoseJwtVerifier
+- [ ] Can verify a valid JWT token
+- [ ] Can handle expired tokens
+- [ ] Can handle invalid signatures
 
 ## Implementation
 
-```rust
-use phenotype-auth-ts::Client;
+```typescript
+import { JoseJwtVerifier } from '@phenotype/auth-ts';
 
-#[tokio::main]
-async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    // Initialize client
-    let client = Client::new().await?;
-    
-    // Execute operation
-    let result = client.hello().await?;
-    
-    println!("Success: {}", result);
-    Ok(())
-}
+const verifier = new JoseJwtVerifier({
+  jwksUrl: 'https://auth.example.com/.well-known/jwks.json',
+  issuer: 'https://auth.example.com',
+  audience: 'my-app',
+});
+
+// Verify a token
+const claims = await verifier.verify(token);
+console.log(claims.sub); // user identifier
 ```
 
-## Expected Output
+## Test
 
+```typescript
+import { describe, it, expect } from 'vitest';
+
+describe('Hello World', () => {
+  it('can verify a token', async () => {
+    const verifier = new JoseJwtVerifier({ ... });
+    const claims = await verifier.verify(validToken);
+    expect(claims.sub).toBeDefined();
+  });
+});
 ```
-Success: Hello from phenotype-auth-ts!
-```
-
-## Next Steps
-
-- [Core Integration](./core-integration)
-- Read [API Reference](../reference/api)

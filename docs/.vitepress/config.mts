@@ -1,8 +1,8 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-  title: "Project",
-  description: "Documentation",
+  title: "phenotype-auth-ts",
+  description: "TypeScript OAuth2/OIDC authentication framework",
   
   themeConfig: {
     nav: [

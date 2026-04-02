@@ -1,38 +1,29 @@
-# phenotype-auth-ts User Journeys
+# User Journeys
 
-> Visual workflows for Phenotype component
+User journeys describe the end-to-end flows users experience when interacting with the authentication system.
 
 ## Available Journeys
 
-| Journey | Duration | Description |
-|---------|----------|-------------|
-| [Quick Start](./quick-start) | < 5 min | Get started with phenotype-auth-ts |
-| [Core Workflow](./core-workflow) | 10 min | Primary use case |
-| [Advanced Setup](./advanced-setup) | 20 min | Production configuration |
+| Journey | Description |
+|---------|-------------|
+| [Quick Start](./quick-start) | Get up and running in 5 minutes |
+| [Core Workflow](./core-workflow) | Standard authentication flow |
 
-## Architecture Overview
+## Journey Map
 
 ```mermaid
-flowchart TB
-    subgraph User["User"]
-        U[Developer]
-    end
-    
-    subgraph phenotype-auth-ts["phenotype-auth-ts"]
-        API[API Layer]
-        Core[Core Engine]
-        Storage[Storage]
-    end
-    
-    U -->|Requests| API
-    API -->|Processes| Core
-    Core -->|Persists| Storage
+flowchart LR
+    A[Start] --> B{Authenticate?}
+    B -->|Yes| C[Get Token]
+    C --> D[Use API]
+    D --> E[Refresh if needed]
+    E --> D
+    B -->|No| F[Anonymous Access]
 ```
 
-## Performance Targets
+## Getting Started
 
-| Operation | P50 | P99 |
-|-----------|-----|-----|
-| Initialize | < 10ms | < 50ms |
-| Process | < 100ms | < 500ms |
-| Query | < 50ms | < 200ms |
+Choose a journey that matches your use case:
+
+1. **Quick Start** - For rapid prototyping
+2. **Core Workflow** - For production applications

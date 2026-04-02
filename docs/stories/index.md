@@ -1,19 +1,21 @@
-# phenotype-auth-ts User Stories
+# User Stories
 
-> Real-world usage examples
-
-## Story Collection
-
-| Story | Complexity | Time |
-|-------|------------|------|
-| [Hello World](./hello-world) | Beginner | 2 min |
-| [Core Integration](./core-integration) | Intermediate | 10 min |
-| [Production Deploy](./production-deploy) | Advanced | 30 min |
+User stories describe features from the perspective of the user.
 
 ## Story Format
 
-Each story includes:
-- **GIF Demo**: Visual walkthrough
-- **Code Blocks**: Copy-paste ready
-- **Mermaid Diagrams**: Architecture visualization
-- **Performance Metrics**: Expected latency/throughput
+```markdown
+As a [type of user]
+I want [goal]
+So that [benefit]
+```
+
+## Available Stories
+
+| Story | Description |
+|-------|-------------|
+| [Hello World](./hello-world) | Simple token verification |
+
+## All Stories
+
+- [Hello World](./hello-world) - Basic token verification

@@ -1,36 +1,23 @@
-# phenotype-auth-ts Traceability Matrix
+# Traceability
 
-> Feature-to-Test-to-Code mapping
+This section maps requirements to implementation and tests.
 
-<TraceabilityMatrix
-    :features="[
-        { id: 'REQ-001', name: 'Core API', tests: ['test_api_init', 'test_api_call'], code: ['src/api.rs'], coverage: 95 },
-        { id: 'REQ-002', name: 'Error Handling', tests: ['test_errors', 'test_recovery'], code: ['src/error.rs'], coverage: 90 },
-        { id: 'REQ-003', name: 'Configuration', tests: ['test_config_load', 'test_config_validate'], code: ['src/config.rs'], coverage: 88 },
-    ]"
-/>
+## FR Coverage Matrix
 
-## Functional Requirements
+| FR ID | Description | Status | Tests |
+|-------|-------------|--------|-------|
+| FR-DOMAIN-001 | Token types | Done | Yes |
+| FR-PORTS-001 | TokenProvider port | Done | Yes |
+| FR-PORTS-002 | TokenStore port | Done | Yes |
+| FR-PORTS-003 | TokenVerifier port | Done | Yes |
+| FR-ADAPT-001 | MemoryTokenStore | Done | Yes |
+| FR-ADAPT-002 | JwtTokenProvider | Done | No |
+| FR-ADAPT-003 | JwtTokenVerifier | Done | Partial |
 
-| ID | Requirement | Priority | Status |
-|----|-------------|----------|--------|
-| REQ-001 | Initialize API connection | P0 | ✅ Implemented |
-| REQ-002 | Handle errors gracefully | P0 | ✅ Implemented |
-| REQ-003 | Load configuration | P1 | ✅ Implemented |
-| REQ-004 | Support async operations | P1 | 🚧 In Progress |
-| REQ-005 | Provide metrics | P2 | 📋 Planned |
+## Test Coverage
 
-## Code Coverage
+See [TEST_COVERAGE_MATRIX.md](https://github.com/KooshaPari/phenotype-auth-ts/blob/main/TEST_COVERAGE_MATRIX.md) for detailed coverage.
 
-<TestCoverageBadge 
-    :overall="92"
-    :unit="95"
-    :integration="89"
-    :e2e="85"
-/>
+## Requirements
 
-## Implementation Links
-
-- Source: `src/`
-- Tests: `tests/`
-- Examples: `examples/`
+- [Requirements](./requirements)

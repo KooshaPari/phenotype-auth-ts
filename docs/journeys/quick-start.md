@@ -1,52 +1,42 @@
 # Quick Start Journey
 
-<UserJourney
-    :steps="[
-        { title: 'Install', desc: 'Install phenotype-auth-ts package' },
-        { title: 'Configure', desc: 'Set up basic configuration' },
-        { title: 'Run', desc: 'Execute first operation' }
-    ]"
-    :duration="5"
-    :gif-src="'/gifs/phenotype-auth-ts-quickstart.gif'"
-/>
+This journey gets you from zero to authenticated in 5 minutes.
 
-## Step-by-Step
+## Steps
 
-### 1. Installation
+### Step 1: Install
 
 ```bash
-# Install via cargo/npm/pip
-cargo add phenotype-auth-ts
-# or
-npm install @phenotype-auth-ts/core
+npm install @phenotype/auth-ts
 ```
 
-### 2. Basic Configuration
+### Step 2: Create a Verifier
 
-```yaml
-# config.yaml
-name: my-project
-environment: development
+```typescript
+import { JoseJwtVerifier } from '@phenotype/auth-ts';
+
+const verifier = new JoseJwtVerifier({
+  jwksUrl: 'https://your-auth-server/.well-known/jwks.json',
+  issuer: 'https://your-auth-server',
+  audience: 'your-app',
+});
 ```
 
-### 3. First Operation
+### Step 3: Verify a Token
 
-```rust
-// Example usage
-use phenotype-auth-ts::Client;
-
-#[tokio::main]
-async fn main() {
-    let client = Client::new().await;
-    let result = client.process().await;
-    println!("{:?}", result);
-}
+```typescript
+const claims = await verifier.verify(token);
+console.log(`User: ${claims.sub}`);
 ```
 
-## Verification
+### Step 4: Add Middleware (Optional)
 
-Run the built-in health check:
+```typescript
+import { createAuthMiddleware } from '@phenotype/auth-ts';
 
-```bash
-cargo test --lib
+app.use(createAuthMiddleware({ verifier }));
 ```
+
+## Next
+
+- [Core Workflow](./core-workflow)
