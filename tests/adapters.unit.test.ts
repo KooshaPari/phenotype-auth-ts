@@ -129,7 +129,7 @@ describe('PlaceholderJwtVerifier', () => {
   describe('verify', () => {
     // Traces to: FR-ADAPT-003
     it('CDD: Given any token, When verified, Then throws INVALID_TOKEN', async () => {
-      await expect(verifier.verify('any-token')).rejects.toThrow('Placeholder verifier');
+      await expect(verifier.verify('any-token')).rejects.toThrow('Token is invalid or malformed');
     });
   });
 

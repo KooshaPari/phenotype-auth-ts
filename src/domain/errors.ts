@@ -46,4 +46,13 @@ export const AuthErrors = {
 
   PROVIDER_ERROR: (message: string) =>
     new AuthError(`Auth provider error: ${message}`, 'PROVIDER_ERROR', 502),
+
+  unsupportedGrantType: (message: string) =>
+    new AuthError(message, 'unsupported_grant_type', 400),
+
+  invalidGrant: (message: string) =>
+    new AuthError(message, 'invalid_grant', 400),
+
+  invalidClient: (message: string) =>
+    new AuthError(message, 'invalid_client', 401),
 } as const;

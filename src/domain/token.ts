@@ -21,6 +21,8 @@ export interface TokenRequest {
   readonly code?: string;
   readonly redirectUri?: string;
   readonly refreshToken?: string;
+  readonly scope?: string;
+  readonly codeVerifier?: string; // PKCE
 }
 
 export interface TokenResponse {
