@@ -1,5 +1,10 @@
 # phenotype-auth-ts
 
+[![Release](https://img.shields.io/github/v/release/KooshaPari/phenotype-auth-ts?include_prereleases&sort=semver)](https://github.com/KooshaPari/phenotype-auth-ts/releases)
+[![License](https://img.shields.io/github/license/KooshaPari/phenotype-auth-ts)](LICENSE)
+[![Phenotype](https://img.shields.io/badge/Phenotype-org-blueviolet)](https://github.com/KooshaPari)
+
+
 TypeScript **OAuth2 / OIDC** authentication patterns using **hexagonal** layout: domain types, ports, and swappable adapters (memory token store, JWT provider).
 
 ## Layout
