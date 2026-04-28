@@ -13,17 +13,10 @@ tasks:
     cmds:
       - bun run test
   lint:
-    desc: Run linter
+    desc: Run static checks
     cmds:
-      - bun run lint
-  fmt:
-    desc: Format code
+      - bun run typecheck
+  clean:
+    desc: Remove build artifacts
     cmds:
-      - bun run format || bunx prettier --write .
-  quality:
-    desc: Run all quality checks
-    deps: [lint, test]
-  docs:build:
-    desc: Build VitePress docs
-    cmds:
-      - bun run docs:build
+      - rm -rf dist coverage .vitepress/dist
