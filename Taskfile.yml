@@ -1,6 +1,7 @@
 version: "3"
 
 vars:
+  LANGUAGE: typescript
   PACKAGE_RUNNER:
     sh: |
       if [ -f bun.lock ] && command -v bun >/dev/null 2>&1; then
@@ -21,7 +22,7 @@ tasks:
       - "{{.PACKAGE_RUNNER}} install"
 
   build:
-    desc: Build the TypeScript package
+    desc: Build the {{.LANGUAGE}} package
     cmds:
       - "{{.PACKAGE_RUNNER}} run build"
 
@@ -31,7 +32,7 @@ tasks:
       - "{{.PACKAGE_RUNNER}} run test"
 
   lint:
-    desc: Run TypeScript checks
+    desc: Run {{.LANGUAGE}} checks
     cmds:
       - "{{.PACKAGE_RUNNER}} run typecheck"
 
