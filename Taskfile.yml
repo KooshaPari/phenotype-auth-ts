@@ -5,15 +5,15 @@ tasks:
     cmds:
       - bun install
   build:
-    desc: Build the project
+    desc: Build the TypeScript project
     cmds:
       - bun run build
   test:
-    desc: Run tests
+    desc: Run the test suite
     cmds:
       - bun run test
   lint:
-    desc: Run static checks
+    desc: Run static type checks
     cmds:
       - bun run typecheck
   clean:
