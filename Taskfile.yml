@@ -10,6 +10,11 @@ vars:
       fi
 
 tasks:
+  default:
+    desc: Show available tasks
+    cmds:
+      - task --list
+
   install:
     desc: Install dependencies
     cmds:
@@ -27,6 +32,11 @@ tasks:
 
   lint:
     desc: Run TypeScript checks
+    cmds:
+      - "{{.PACKAGE_RUNNER}} run typecheck"
+
+  typecheck:
+    desc: Run the TypeScript compiler without emitting files
     cmds:
       - "{{.PACKAGE_RUNNER}} run typecheck"
 
