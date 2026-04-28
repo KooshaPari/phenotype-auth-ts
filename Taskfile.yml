@@ -1,21 +1,35 @@
-version: '3'
+version: "3"
+
+vars:
+  PACKAGE_RUNNER:
+    sh: |
+      if [ -f bun.lock ] && command -v bun >/dev/null 2>&1; then
+        echo bun
+      else
+        echo npm
+      fi
+
 tasks:
   install:
     desc: Install dependencies
     cmds:
-      - bun install
+      - "{{.PACKAGE_RUNNER}} install"
+
   build:
-    desc: Build the TypeScript project
+    desc: Build the TypeScript package
     cmds:
-      - bun run build
+      - "{{.PACKAGE_RUNNER}} run build"
+
   test:
     desc: Run the test suite
     cmds:
-      - bun run test
+      - "{{.PACKAGE_RUNNER}} run test"
+
   lint:
-    desc: Run static type checks
+    desc: Run TypeScript checks
     cmds:
-      - bun run typecheck
+      - "{{.PACKAGE_RUNNER}} run typecheck"
+
   clean:
     desc: Remove build artifacts
     cmds:
